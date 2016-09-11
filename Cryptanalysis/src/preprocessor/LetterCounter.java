@@ -104,14 +104,14 @@ public class LetterCounter {
         for (Map.Entry<String,Integer> entry : trigram.entrySet()) {
             String key = entry.getKey();
             Integer value = entry.getValue();
-            if (value >= 14) {
+            if (value >= 13) {
                 out.write(key + " " + value + "  \n");
             }
         }
         out.close();
     }
     
-    public static void main(String[] args) {
+    /*public static void main(String[] args) {
         LetterCounter counter = new LetterCounter();
         counter.readBytes();
         counter.countLetter();
@@ -122,5 +122,5 @@ public class LetterCounter {
         } catch (IOException ex) {
             Logger.getLogger(LetterCounter.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }
+    }*/
 }
