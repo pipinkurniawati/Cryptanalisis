@@ -63,10 +63,10 @@ public class KeywordFinder {
         System.out.println(keyword);
     }
     
-    public static void main(String[] args) {
+    /*public static void main(String[] args) {
         KeywordFinder kf = new KeywordFinder();
         kf.readBytes();
         kf.classify();
         kf.findKeyword();
-    }
+    }*/
 }
