@@ -9,7 +9,6 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.Arrays;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -21,7 +20,7 @@ public class KeywordFinder {
     private String infile = new String ("C:\\in2.txt");
     private String ciphertext;
     private String[] classifier = new String[8];
-    private int[] maxCounter;
+    private StringBuilder keyword = new StringBuilder("--------");
     
     public String clearSymbols(String text) {
         String result = new String();
@@ -57,32 +56,17 @@ public class KeywordFinder {
         }
     }
     
-    public int getMaxIndex(int[] array) {
-        int max = 0, idx = -1;
-        for (int i = 0; i < array.length; i++) {
-            if (array[i] > max) {
-              max = array[i];
-              idx = i;
-            }
-        }
-        return idx;
-    }
-    
-    public void maxOccurence() {
-        for(int i=0; i<8; i++) {
-            maxCounter = new int[26];
-            for(int j=0; j<classifier[i].length(); j++) {
-                maxCounter[classifier[i].charAt(j)-'A'] = maxCounter[classifier[i].charAt(j)-'A']+1;
-            }
-            classifier[i] = "" + getMaxIndex(maxCounter);
-            System.out.println(getMaxIndex(maxCounter));
-        }
+    public void findKeyword() {
+        keyword.setCharAt(3, (char)((('H' - 'T' + 26) % 26) + 'A'));
+        keyword.setCharAt(4, (char)((('W' - 'H') % 26) + 'A'));
+        keyword.setCharAt(5, (char)((('I' - 'E') % 26) + 'A'));
+        System.out.println(keyword);
     }
     
     public static void main(String[] args) {
         KeywordFinder kf = new KeywordFinder();
         kf.readBytes();
         kf.classify();
-        kf.maxOccurence();
+        kf.findKeyword();
     }
 }

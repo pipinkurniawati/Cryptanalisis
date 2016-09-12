@@ -52,6 +52,7 @@ public class OccurenceCounter {
                 positions.add(i);
             }
         }
+        System.out.println(positions.get(0));
     }
     
     public void countDistances() {
